@@ -1,5 +1,5 @@
 import React from 'react'
-import { LoginScreen } from '../../screens'
+import { LoginScreen, RegisterScreen } from '../../screens'
 
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
@@ -9,6 +9,9 @@ export default function AuthNavigation() {
   return (
     <Stack.Navigator>
       <Stack.Screen name='LoginScreen' component={LoginScreen} options={{
+        headerShown: false
+      }} />
+      <Stack.Screen name="Register" component={RegisterScreen} options={{
         headerShown: false
       }} />
     </Stack.Navigator>

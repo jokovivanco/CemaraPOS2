@@ -21,7 +21,7 @@ const Drawer = createDrawerNavigator()
 
 export default function MainNavigation() {
   const { currentUser } = useSelector(state => state.user)
-
+  console.log(currentUser)
   const theme = useTheme()
 
   return (

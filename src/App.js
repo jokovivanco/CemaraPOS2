@@ -13,7 +13,7 @@ import { Provider } from 'react-redux';
 import store from './redux/store';
 
 //react-native-paper import
-import { configureFonts, DefaultTheme, Provider as PaperProvider, ActivityIndicator } from 'react-native-paper'
+import { configureFonts, DefaultTheme, Provider as PaperProvider } from 'react-native-paper'
 import fontConfig from './assets/fonts/fontConfig'
 
 //firebase import

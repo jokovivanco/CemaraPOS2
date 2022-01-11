@@ -15,5 +15,8 @@ export default StyleSheet.create({
   },
   input: {
     marginBottom: 14
+  },
+  button: {
+    marginBottom: 10
   }
 })

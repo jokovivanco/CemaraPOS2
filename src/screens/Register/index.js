@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { View, Image } from 'react-native'
 import logo from '../../assets/images/small_rounded_logo.png'
 import styles from './styles'
+import auth from '@react-native-firebase/auth'
+import firestore from '@react-native-firebase/firestore'
 
 import { Picker } from '@react-native-picker/picker'
 import { TextInput, Button } from 'react-native-paper'
@@ -13,8 +15,36 @@ export default function Register() {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState('');
+  const [role, setRole] = useState('manager');
   const [hidePassword, setHidePassword] = useState(true);
+
+  const onSubmit = async () => {
+    const data = {
+      dateTimeCreated: firestore.Timestamp.now(),
+      email: email,
+      name: password,
+      role: role
+    }
+
+    if (email && password) {
+
+      await auth()
+        .createUserWithEmailAndPassword(email, password)
+        .then(() => {
+          firestore()
+            .collection('users')
+            .doc(auth().currentUser.uid)
+            .set(data)
+
+          console.log('Login was successfully')
+        })
+        .catch(error => {
+          console.log('Login is failed', error)
+        })
+    } else {
+      alert('Tolong lengkapi field terlebih dahulu!')
+    }
+  }
 
   return (
     <View style={styles.container}>
@@ -52,7 +82,7 @@ export default function Register() {
       </Picker>
       <Button
         style={styles.button}
-        onPress={() => { }}
+        onPress={onSubmit}
         mode='contained'
       >
         Register

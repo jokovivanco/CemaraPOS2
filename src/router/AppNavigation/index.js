@@ -17,7 +17,7 @@ import { useTheme } from 'react-native-paper'
 
 const Stack = createNativeStackNavigator()
 
-export default function AppNavigation() {
+export default function AppNavigation({ user }) {
   const dispatch = useDispatch()
   const theme = useTheme()
 
